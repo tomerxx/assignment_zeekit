@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 // import { ApiData, API_URL, Local } from "../services/services";
 import "../style/style.scss";
-import { DataContext } from "./app";
+import { DataContext } from "./store";
 import { ApiData } from "../services/services";
 import { API_URL, API_KEY } from "../services/constant";
 
@@ -36,7 +36,6 @@ const Search = (props) => {
 				setData({...data,movies: res.data.Search || [],favorite_display: false,pending: false,search: value,})
 			},
 			(rej) => {
-				console.log(rej);
 				setData({...data,movies: [],favorite_display: false,pending: false,});
 			},
 		);

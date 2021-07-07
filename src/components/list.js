@@ -1,13 +1,16 @@
 import React, {useContext} from "react";
 import empty from "is-empty";
 import Item from "./item"
-import { DataContext } from "./app";
+import { DataContext } from "./store";
 import "../style/style.scss";
 
 
 const List = (props) => {
 const {data} = useContext(DataContext);
 const movies = !data.favorite_display ? data.movies : data.favorite
+
+if(data.pending ) return  <div>Loading ... </div>  
+
 	return (
 			<div className="list">
 				{!empty(movies) ?
