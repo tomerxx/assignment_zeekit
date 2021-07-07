@@ -5,7 +5,7 @@ import Login from "./login";
 import { ApiData, Local } from "../services/services";
 import { API_URL, API_KEY } from "../services/constant";
 import "../style/style.scss";
-// check
+// context branch
 const App = () => {
 	const [data, setData] = useState({
 		movies: [],
