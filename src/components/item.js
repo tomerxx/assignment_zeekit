@@ -1,10 +1,22 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
+import { DataContext } from "./app";
 import Popup from "./popup";
+// import DataContext from ""
 
 const Item = (props) => {
 const [popup,setPopup] = useState(false)
-const {item,addFavorite,isFavorite} = props;
+const {item} = props;
+const {data,setData} = useContext(DataContext)
 const close = ()=>{setPopup(false)}
+const isFavorite = data.favorite.find(o => o.imdbID === item.imdbID);
+
+const addFavorite = (movie) => {
+          setData({...data, favorite: (!isFavorite ? 
+            [...data.favorite, movie]                                           // if movie is not favorite add it
+          : [...data.favorite.filter((item) => item.imdbID !== movie.imdbID,)] // if movie is in favorite remove it
+          ), search: "",})
+};
+
 	return (<>
         <div className="item"  >
         <div className="poster" style={{backgroundImage: `url(${item.Poster})`}} onClick={()=>{setPopup(true)}} />
