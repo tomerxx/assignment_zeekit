@@ -4,6 +4,10 @@ import Search from "./search";
 import List from "./list";
 import Login from "./login";
 import { Local } from "../services/services";
+
+import GetData from "./Temp";
+
+
 import "../style/style.scss";
 import empty from "is-empty";
 
@@ -22,6 +26,8 @@ const App = () => {
 		if(!empty(data.favorite)) Local.saveItems("favorite", data.favorite);
 	}, [data.favorite]);
 	
+	
+	return <GetData   />
 	if (!Local.getItems("Login")) return <Login />;
 
 	const showFavorite = () => {
