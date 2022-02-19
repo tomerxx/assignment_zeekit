@@ -1,31 +1,20 @@
-import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 
-const GetData = () => {
-	const [data, setData] = useState(0);
-
-useEffect(()=>{
-	const interval = setInterval(async () => {
-		
-		 axios.get("http://blynk-cloud.com/NFmzesAKsa340A_zSVk5NUuKkALH99RD/get/V5"
-		).then((res,rej)=>{
- // console.log(res)
-
-			// let a=Math.round(res.data[0])
-			console.log(res)
-			 setData(res.data[0]) ;
-
-		});
+export const getData = new function () {
 	
-// console.log(d.data)
-// console.log(data)
-
-
-	  }, 1000);
-  
-	  return () => clearInterval(interval);
-},[data])
- console.log("render")
-	return <div>{data && data}</div>;
+	
+	 this.a = ("343")
+	this.data = async () => {
+	return	 await axios.get(
+			"http://blynk-cloud.com/NFmzesAKsa340A_zSVk5NUuKkALH99RD/get/V5",
+		);
+		//return res.data[0];
+	};
 };
-export default GetData;
+
+// export const GetData = new (function () {
+// 	this.getItems = async ( url=null, params=null ) =>
+// 		await axios.get(url, { params });
+// })();
+
+// export default GetData;

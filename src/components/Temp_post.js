@@ -1,11 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 
-const PostData = () => {
-	//const [data, setData] = useState(0);
-	const [inputValue, setInputValue] = useState("");
+const PostData = props => {
+	// const [postData, setPostData] = useState(data);
+	// debugger
+	// const [data,setData] =useState("")
+	const [inputValue, setInputValue] = useState();
 
-	useEffect(() => {
+	const sendData = () => {
 		//	const interval = setInterval(async () => {
 
 		axios
@@ -13,24 +15,48 @@ const PostData = () => {
 				"http://blynk-cloud.com/NFmzesAKsa340A_zSVk5NUuKkALH99RD/update/v5",
 				{
 					params: {
-						value: inputValue,
+						value: `${props.data} <br/> ${inputValue}`,
 					},
 				},
 			)
 			.then((res, rej) => {
-				console.log(res);
-				// setData(res.data[0]) ;
+				setInputValue("");
+				//console.log(res)
 			});
-	}, [inputValue]);
+	};
+	const clearData = () => {
+		//	const interval = setInterval(async () => {
 
+		axios
+			.get(
+				"http://blynk-cloud.com/NFmzesAKsa340A_zSVk5NUuKkALH99RD/update/v5",
+				{
+					params: {
+						value: ``,
+					},
+				},
+			)
+			.then((res, rej) => {
+				//console.log(res)
+			});
+	};
 
 	const handleInput = e => {
 		return setInputValue(e.target.value);
 	};
 
 	return (
-		<div>
-			<input onChange={handleInput} value={inputValue} />
+		<div dir="rtl">
+			<input 
+			
+				onKeyPress={event => {
+					if (event.key === "Enter") sendData();
+				}}
+				onChange={handleInput}
+				value={inputValue}
+			/>
+			<button onClick={sendData}> שלח </button>
+			<button onClick={clearData}> נקה מסך </button>
 		</div>
 	);
 };

@@ -18,18 +18,23 @@ body {
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		margin-top: 100px;
 		input {
 			height: 40px;
-    margin-top: 20px;
-    width: 200px;
-    font-size: 26px;
+			margin-top: 20px;
+			width: 200px;
+			font-size: 20px;
 		}
-		div {
-			font-size: 32px;
-			height:40px;
+		div.text {
+			font-size: 20px;
+			text-align: right;
+			height: 300px;
+			/* border: 1px solid; */
+			width: 360px;
+			overflow-x: hidden;
+			overflow-y: auto;
 		}
 	}
+	
 	button {
 		cursor: pointer;
 		padding: 0px 12px;
@@ -40,7 +45,7 @@ body {
 		border: none;
 		font-size: 0.9em;
 		height: 36px;
-		margin-left: 10px;
+		margin-right: 10px;
 		white-space: nowrap;
 
 		&:hover {
