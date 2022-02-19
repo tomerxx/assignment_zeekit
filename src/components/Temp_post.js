@@ -15,7 +15,8 @@ const PostData = props => {
 				"http://blynk-cloud.com/NFmzesAKsa340A_zSVk5NUuKkALH99RD/update/v5",
 				{
 					params: {
-						value: `${props.data} <br/> ${inputValue}`,
+						// value: `${props.data} <br/> ${inputValue}`,
+						 value: `[${inputValue}]`,
 					},
 				},
 			)

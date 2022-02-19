@@ -7,14 +7,14 @@ import "../style/style.scss";
 const AppTemp = () => {
 const [data,setData] =useState("")
 useEffect(() => {
-//	const interval = setInterval(async () => {   //  
+	const interval = setInterval(async () => {   //  
 	getData.data().then(o=>{
 		console.log(o.data[0])
 		setData(o.data[0])})
 
-//	}, 500);
+	}, 500);
   
-//	return () => clearInterval(interval);
+	return () => clearInterval(interval);
 },[data])
 // useEffect(() => {
 // 	getData.data().then(o=>{setData(o.data[0])})
@@ -29,7 +29,8 @@ useEffect(() => {
 		<div className="App">
 		 {
 		 
-		 <div dir="rtl" className={"text"} dangerouslySetInnerHTML={{__html: data}} />
+		//  <div dir="rtl" className={"text"} dangerouslySetInnerHTML={{__html: data}} />
+		 data
 		 
 		 }
 		  <PostData data={data}  />
