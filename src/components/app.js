@@ -1,13 +1,9 @@
 //ver 1
-import React, { useState, useEffect,createContext } from "react";
+import React, { useState, useEffect,createContext, useMemo } from "react";
 import Search from "./search";
 import List from "./list";
 import Login from "./login";
 import { Local } from "../services/services";
-
-import GetData from "./Temp";
-
-
 import "../style/style.scss";
 import empty from "is-empty";
 
@@ -21,18 +17,16 @@ const App = () => {
 		favorite_display: true,
 		search: "",
 	});
+	const list = useMemo(() => <List/>, [false])
 	
 	useEffect(() => {
 		if(!empty(data.favorite)) Local.saveItems("favorite", data.favorite);
 	}, [data.favorite]);
 	
-	
-	return <GetData   />
 	if (!Local.getItems("Login")) return <Login />;
 
 	const showFavorite = () => {
 		setData({...data,favorite_display: true,search: "",});};
-	
 	return (
 	<DataContext.Provider value={{data:data,setData:setData}}>
 		<div className="wrapper">
@@ -44,7 +38,7 @@ const App = () => {
 				<Search />
 			</header>
 			
-				{!data.pending ? <List/> : <div>Loading ... </div>}  
+				{!data.pending ? list : <div>Loading ... </div>}  
 		</div>
 	</DataContext.Provider>
 	);

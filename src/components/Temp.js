@@ -1,26 +1,31 @@
-import React, { useEffect, useState } from "react";
-import { useInterval } from "./useInterval";
-import { ApiData } from "./services";
+import React, { useEffect, useRef, useState } from "react";
+import axios from "axios";
 
 const GetData = () => {
-	const [data, setData] = useState("");
-	useInterval(() => {
-		ApiData.getItems("http://192.168.1.109/temperaturec")
-			
-			.then(function (myJson) {
-				// debugger
-				console.log(myJson);
-				handleData(myJson);
-			});
-	}, 1000);
+	const [data, setData] = useState(0);
 
-	const handleData = d => {
+useEffect(()=>{
+	const interval = setInterval(async () => {
+		
+		 axios.get("http://blynk-cloud.com/NFmzesAKsa340A_zSVk5NUuKkALH99RD/get/V5"
+		).then((res,rej)=>{
+ // console.log(res)
 
-        setData(d.data);
+			// let a=Math.round(res.data[0])
+			console.log(res)
+			 setData(res.data[0]) ;
 
-		return <></>;
-	};
+		});
+	
+// console.log(d.data)
+// console.log(data)
 
+
+	  }, 1000);
+  
+	  return () => clearInterval(interval);
+},[data])
+ console.log("render")
 	return <div>{data && data}</div>;
 };
 export default GetData;

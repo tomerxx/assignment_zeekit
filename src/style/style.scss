@@ -13,7 +13,23 @@ body {
 	color: white;
 	font-family: "Martel Sans", sans-serif;
 	font-size: 18px;
-
+	.App {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		margin-top: 100px;
+		input {
+			height: 40px;
+    margin-top: 20px;
+    width: 200px;
+    font-size: 26px;
+		}
+		div {
+			font-size: 32px;
+			height:40px;
+		}
+	}
 	button {
 		cursor: pointer;
 		padding: 0px 12px;
@@ -45,13 +61,14 @@ body {
 		.search_content {
 			margin: 10px;
 
-			&,* {
-				display:flex;
+			&,
+			* {
+				display: flex;
 				flex-grow: 1;
 				align-items: center;
 			}
 			form {
-				label{
+				label {
 					flex-grow: 0;
 				}
 			}
@@ -67,7 +84,7 @@ body {
 
 		form {
 			display: flex;
-    align-items: center;
+			align-items: center;
 
 			label {
 				font-size: 18px;
@@ -83,7 +100,7 @@ body {
 				padding: 0 20px;
 				color: #777777;
 				font-size: 16px;
-				 width: 100%;
+				width: 100%;
 				&::placeholder {
 					color: #d5cdeb;
 					opacity: 0;
@@ -95,7 +112,7 @@ body {
 				left: 50%;
 				top: 50%;
 				transform: translate(-53%, -50%);
-				width:60%;
+				width: 60%;
 				max-width: 24em;
 				color: #fff;
 				font-size: 24px;
@@ -150,7 +167,7 @@ body {
 						color: #d6d6d6;
 						margin-left: 10px;
 					}
-					.title{
+					.title {
 						text-overflow: ellipsis;
 						overflow: hidden;
 					}
@@ -230,10 +247,10 @@ body {
 					}
 
 					.plot {
-					//	display: -webkit-box;
-					//	-webkit-line-clamp: 2;
-					//	-webkit-box-orient: vertical;
-					//	overflow: hidden;
+						//	display: -webkit-box;
+						//	-webkit-line-clamp: 2;
+						//	-webkit-box-orient: vertical;
+						//	overflow: hidden;
 					}
 					.link {
 						cursor: pointer;
@@ -266,10 +283,9 @@ body {
 		}
 	}
 	@media (max-width: 600px) {
-		.item{
+		.item {
 			flex-direction: column;
-			width:80% !important;
-			
+			width: 80% !important;
 		}
 	}
 	@media (max-width: 900px) {
@@ -283,10 +299,9 @@ body {
 				}
 			}
 		}
-	}	
+	}
 	@media (max-width: 520px) {
 		.search_content {
-				
 			label {
 				display: none;
 			}
@@ -300,7 +315,7 @@ body {
 	}
 }
 .more .plot {
-//	-webkit-line-clamp: inherit !important;
+	//	-webkit-line-clamp: inherit !important;
 }
 .more .link {
 	display: none;
